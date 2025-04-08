@@ -1,0 +1,12 @@
+[07-04-2025 08:44:36.360 PM] info: 	O servidor está rodando em http://localhost:3000
+[07-04-2025 09:32:41.979 PM] info: 	O servidor está rodando em http://localhost:3000
+[07-04-2025 09:34:04.278 PM] info: 	O servidor está rodando em http://localhost:3000
+[07-04-2025 09:34:08.282 PM] error: 	o valor nulo na coluna "password_hash" da relação "users" viola a restrição de não-nulo
+[07-04-2025 09:38:34.505 PM] info: 	O servidor está rodando em http://localhost:3000
+[07-04-2025 09:38:44.586 PM] info: 	O servidor está rodando em http://localhost:3000
+[07-04-2025 09:38:58.518 PM] info: 	O servidor está rodando em http://localhost:3000
+[07-04-2025 09:39:16.991 PM] error: 	data and salt arguments required
+[07-04-2025 09:39:38.499 PM] info: 	O servidor está rodando em http://localhost:3000
+[07-04-2025 09:39:42.496 PM] info: 	O servidor está rodando em http://localhost:3000
+[07-04-2025 09:41:24.848 PM] info: 	O servidor está rodando em http://localhost:3000
+[07-04-2025 09:42:04.060 PM] info: 	O servidor está rodando em http://localhost:3000
