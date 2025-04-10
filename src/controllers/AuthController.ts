@@ -37,7 +37,7 @@ class AuthController {
         }
 
         const contentToken = {
-            id: user.id
+            userId: user.id
         }
         
         const token = jwt.sign(contentToken, process.env.JWT_SECRET as string, { expiresIn: '3h' })

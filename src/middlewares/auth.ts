@@ -8,8 +8,7 @@ export interface AuthRequest extends Request {
   userId: string;
 }
 
-export
-const verifyToken = (
+export const verifyToken = (
   req: Request & { userId: string },
   _res: Response,
   next: NextFunction
@@ -21,9 +20,9 @@ const verifyToken = (
       throw new AppError("Token não informado", 401);
     }
 
-    const data = jwt.verify(token, process.env.JWT_SECRET ?? "") as dataJwt
+    const data = jwt.verify(token, process.env.JWT_SECRET ?? "") as dataJwt;
 
-    req.userId = data.userId
+    req.userId = data.userId;
 
     next();
   } catch (error) {

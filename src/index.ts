@@ -12,6 +12,7 @@ import { handleError } from "./middlewares/handleError";
 
 import authRouter from "./routes/auth.routes";
 import logger from "./config/winston";
+import clientRouter from "./routes/client.routes";
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(express.json()); // Permite que o express entenda JSON
 
 app.use("/users", userRouter);
 app.use("/login", authRouter);
+app.use("/clients", clientRouter)
 
 app.get("/env", (req, res) => {
   res.json({
