@@ -23,6 +23,7 @@ export const verifyToken = (
     const data = jwt.verify(token, process.env.JWT_SECRET ?? "") as dataJwt;
 
     req.userId = data.userId;
+    
 
     next();
   } catch (error) {

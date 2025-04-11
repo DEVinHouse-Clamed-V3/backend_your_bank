@@ -13,6 +13,9 @@ import { handleError } from "./middlewares/handleError";
 import authRouter from "./routes/auth.routes";
 import logger from "./config/winston";
 import clientRouter from "./routes/client.routes";
+import creditCardRouter from "./routes/creditCard.routes";
+import OperatorRouter from "./routes/operator.routes";
+import rechargeRouter from "./routes/recharge.routes";
 
 const app = express();
 
@@ -23,6 +26,9 @@ app.use(express.json()); // Permite que o express entenda JSON
 app.use("/users", userRouter);
 app.use("/login", authRouter);
 app.use("/clients", clientRouter)
+app.use("/creditcards", creditCardRouter)
+app.use("/operators", OperatorRouter)
+app.use("/recharges", rechargeRouter)
 
 app.get("/env", (req, res) => {
   res.json({

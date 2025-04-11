@@ -4,14 +4,22 @@ import { User } from "../entities/User";
 import { AppDataSource } from "../data-source";
 import bcrypt from "bcrypt";
 import { Client } from "../entities/Client";
+import { CreditCard } from "../entities/CreditCard";
+import CreditCardUtils from "../utils/CreditCardUtils";
+import { addYears } from "date-fns";
+import { Movement } from "../entities/Movement";
 
 class UserController {
   private userRepository;
   private clientRepository;
+  private creditCardRepository;
+  private movementRepository;
 
   constructor() {
     this.userRepository = AppDataSource.getRepository(User);
     this.clientRepository = AppDataSource.getRepository(Client);
+    this.creditCardRepository = AppDataSource.getRepository(CreditCard);
+    this.movementRepository = AppDataSource.getRepository(Movement);
   }
 
   create = async (req: Request, res: Response, next: NextFunction) => {
@@ -54,11 +62,37 @@ class UserController {
           password_hash: senhaCriptografada,
         });
 
-        await this.clientRepository.save({
+        const client = await this.clientRepository.save({
           email: body.email,
           income: body.income,
           gender: body.gender,
           user_id: user.id,
+        });
+
+        this.creditCardRepository.save({
+          client_id: client.id,
+          placeholder: body.name,
+          cvv: CreditCardUtils.generateCvvNumber().toString(),
+          number: CreditCardUtils.generateCardNumber().toString(),
+          expiration_date: addYears(new Date(), 5),
+          limit: 50,
+        });
+
+        this.creditCardRepository.save({
+          client_id: client.id,
+          placeholder: body.name,
+          cvv: CreditCardUtils.generateCvvNumber().toString(),
+          number: CreditCardUtils.generateCardNumber().toString(),
+          expiration_date: addYears(new Date(), 5),
+          limit: 50,
+        });
+
+        await this.movementRepository.save({
+          value: 999,
+          type: "ENTRADA",
+          description: `Bônus de criação de conta`,
+          client_id: client?.id,
+          balance: 999,
         });
 
         res.status(201).json({ name: user.name });
