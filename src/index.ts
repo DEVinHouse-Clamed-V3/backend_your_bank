@@ -16,6 +16,7 @@ import clientRouter from "./routes/client.routes";
 import creditCardRouter from "./routes/creditCard.routes";
 import OperatorRouter from "./routes/operator.routes";
 import rechargeRouter from "./routes/recharge.routes";
+import movementRouter from "./routes/movement.routes";
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use("/clients", clientRouter)
 app.use("/creditcards", creditCardRouter)
 app.use("/operators", OperatorRouter)
 app.use("/recharges", rechargeRouter)
+app.use("/movements", movementRouter)
 
 app.get("/env", (req, res) => {
   res.json({
