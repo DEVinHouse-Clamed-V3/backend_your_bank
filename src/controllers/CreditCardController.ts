@@ -18,6 +18,37 @@ class CreditCardController {
     next: NextFunction
   ) => {
     try {
+      /* 
+        #swagger.security = [{ "bearerAuth": [] }]
+
+        #swagger.tags = ['Credit Card']
+        #swagger.summary = 'Lista os cartões de crédito do cliente logado'
+        #swagger.description = 'Retorna todos os cartões de crédito do cliente logado'
+
+        #swagger.responses[200] = {
+          description: 'Lista de cartões de crédito do cliente logado.',
+          content: {
+            "application/json": {
+              schema: {
+                $ref: '#/definitions/responseGetCreditCardsByClient'
+              }
+            }
+          }
+        }
+        
+        #swagger.responses[500] = {
+          description: "Erro interno do servidor",
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/errorResponse"
+              }
+            }
+          }
+        }
+
+      */
+
       const client = await this.clientRepository.findOneBy({
         user_id: req.userId,
       });

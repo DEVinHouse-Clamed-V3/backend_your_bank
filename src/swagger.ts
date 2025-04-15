@@ -23,12 +23,36 @@ const doc = {
         income: 0,
       },
       responseRegisterUser: {
-        name: "Henrique Douglas"
+        name: "Henrique Douglas",
       },
       errorResponse: {
-        message: "Mensagem de erro"
-      }
-    }
+        message: "Mensagem de erro",
+      },
+      responseGetCreditCardsByClient: [{
+        id: 9,
+        client_id: 12,
+        placeholder: "Henrique Douglas",
+        number: "8568280719675632",
+        cvv: "535",
+        expiration_date: "2030-04-15",
+        limit: "50.00",
+        created_at: "2025-04-15T21:12:39.799Z",
+        updated_at: "2025-04-15T21:12:39.799Z",
+      }],
+      responseGetOperators: [{
+        id: 1,
+        name: "Operadora 1",
+        cover: "url_da_imagem",
+        created_at: "2025-04-15T21:12:39.799Z",
+        updated_at: "2025-04-15T21:12:39.799Z",
+      }]
+    },
+    securitySchemes: {
+      bearerAuth: {
+        type: "http",
+        scheme: "bearer",
+      },
+    },
   },
 };
 

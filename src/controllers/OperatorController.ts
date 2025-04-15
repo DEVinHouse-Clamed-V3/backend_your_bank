@@ -13,12 +13,42 @@ class OperatorController {
   }
 
   getOperators = async (req: Request, res: Response, next: NextFunction) => {
-     try {
-        const operators = await this.operatorRepository.find()
-        res.status(200).json(operators);
-     } catch (error) {
-        next(error);
-     }
+   /* 
+      #swagger.security = [{ "bearerAuth": [] }]
+
+      #swagger.tags = ['Operator']
+      #swagger.summary = 'Lista todos os operadoras'
+      #swagger.description = 'Retorna uma lista com todos os operadoras cadastrados no sistema'
+
+      #swagger.responses[200] = {
+        description: 'Lista de operadores cadastrados.',
+        content: {
+          "application/json": {
+            schema: {
+              $ref: '#/components/schemas/responseGetOperators'
+            }
+          }
+        }
+      }
+      
+      #swagger.responses[500] = {
+        description: "Erro interno do servidor",
+        content: {
+          "application/json": {
+            schema: {
+              $ref: "#/components/schemas/errorResponse"
+            }
+          }
+        }
+      }
+
+   */
+        try {
+      const operators = await this.operatorRepository.find();
+      res.status(200).json(operators);
+        } catch (error) {
+      next(error);
+        }
   };
 }
 

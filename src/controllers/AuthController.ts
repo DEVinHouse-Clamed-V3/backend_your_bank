@@ -14,6 +14,66 @@ class AuthController {
 
   login = async (req: Request, res: Response, next: NextFunction) => {
     try {
+
+      /* 
+        #swagger.path = '/login'
+        #swagger.tags = ['Auth']
+        #swagger.summary = 'Realiza login de um usuário'
+        #swagger.description = 'Autentica um usuário no sistema e retorna um token JWT válido por 3 horas'
+
+        #swagger.requestBody = {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                properties: {
+                  document: { type: "string", example: "999.999.999-98" },
+                  password: { type: "string", example: "123456" }
+                },
+                required: ["document", "password"]
+              }
+            }
+          }
+        }
+
+        #swagger.responses[200] = {
+          description: "Login realizado com sucesso",
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                properties: {
+                  token: { type: "string", example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." },
+                  name: { type: "string", example: "John Doe" }
+                }
+              }
+            }
+          }
+        }
+
+        #swagger.responses[400] = {
+          description: "Credenciais inválidas ou campos obrigatórios ausentes",
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/errorResponse"
+              }
+            }
+          }
+        }
+
+        #swagger.responses[500] = {
+          description: "Erro interno do servidor",
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/errorResponse"
+              }
+            }
+          }
+        }
+      */
         const body = req.body 
 
         if(!body.document || !body.password) {
