@@ -7,7 +7,7 @@ const creditCardRouter = Router();
 const creditCardController = new CreditCardController();
 
 creditCardRouter.get(
-  "/",
+  "/creditcards",
   verifyToken,
   creditCardController.getCreditCardsByClient
 );

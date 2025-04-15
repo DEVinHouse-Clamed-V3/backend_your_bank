@@ -7,7 +7,7 @@ const movementRouter = Router();
 const movementController = new MovementController();
 
 movementRouter.get(
-  "/",
+  "/movements",
   verifyToken,
   movementController.getMovementByClientAndDate
 );

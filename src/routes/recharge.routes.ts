@@ -7,7 +7,7 @@ const rechargeRouter = Router();
 const rechargeController = new RechargeController();
 
 rechargeRouter.post(
-  "/",
+  "/recharges",
   verifyToken,
   rechargeController.create
 );

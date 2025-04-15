@@ -18,19 +18,25 @@ import OperatorRouter from "./routes/operator.routes";
 import rechargeRouter from "./routes/recharge.routes";
 import movementRouter from "./routes/movement.routes";
 
+import swaggerUi from "swagger-ui-express";
+import swaggerOutput from "../swagger_output.json";
+
+
 const app = express();
 
 app.use(cors()); // Permite que o express entenda requisições de outros domínios
 
 app.use(express.json()); // Permite que o express entenda JSON
 
-app.use("/users", userRouter);
-app.use("/login", authRouter);
-app.use("/clients", clientRouter)
-app.use("/creditcards", creditCardRouter)
-app.use("/operators", OperatorRouter)
-app.use("/recharges", rechargeRouter)
-app.use("/movements", movementRouter)
+app.use("/", userRouter);
+app.use("/", authRouter);
+app.use("/", clientRouter)
+app.use("/", creditCardRouter)
+app.use("/", OperatorRouter)
+app.use("/", rechargeRouter)
+app.use("/", movementRouter)
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerOutput));
 
 app.get("/env", (req, res) => {
   res.json({

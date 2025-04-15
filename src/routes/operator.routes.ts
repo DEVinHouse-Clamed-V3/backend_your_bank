@@ -7,7 +7,7 @@ const OperatorRouter = Router();
 const operatorController = new OperatorController();
 
 OperatorRouter.get(
-  "/",
+  "/operators",
   verifyToken,
   operatorController.getOperators
 );

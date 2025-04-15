@@ -7,6 +7,6 @@ const clientRouter = Router();
 const clientController = new ClientController()
 
 // mudar depois pra tipagem 
-clientRouter.get("/balance", verifyToken,  clientController.getBalanceByClient)
+clientRouter.get("/clients/balance", verifyToken,  clientController.getBalanceByClient)
 
 export default clientRouter;

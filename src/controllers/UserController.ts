@@ -23,6 +23,69 @@ class UserController {
   }
 
   create = async (req: Request, res: Response, next: NextFunction) => {
+    
+    /*
+       #swagger.tags = ['Users']
+       #swagger.summary = 'Registra um novo usuário'
+       #swagger.description = 'Adiciona um novo usuário ao sistema junto com o cliente e 2 cartões de crédito'
+       
+       #swagger.requestBody = {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/registerUserBody"
+              }  
+            }
+          }
+        }
+
+      #swagger.responses[201] = {
+           description: "Criado com sucesso",
+           content: {
+             "application/json": {
+               schema:{
+                 $ref: "#/components/schemas/responseRegisterUser"
+               }
+             }          
+           }
+         }   
+
+      #swagger.responses[400] = {
+           description: "Erro de validação",
+           content: {
+             "application/json": {
+               schema: {
+                 $ref: "#/components/schemas/errorResponse"
+               }
+             }
+           }
+         }
+
+      #swagger.responses[409] = {
+           description: "Conflito - Documento ou email já cadastrado",
+           content: {
+             "application/json": {
+               schema: {
+                 $ref: "#/components/schemas/errorResponse"
+               }
+             }
+           }
+         }
+
+      #swagger.responses[500] = {
+           description: "Erro interno do servidor",
+           content: {
+             "application/json": {
+               schema: {
+                 $ref: "#/components/schemas/errorResponse"
+               }
+             }
+           }
+         }
+    */
+
+
     try {
       const body = req.body;
 
