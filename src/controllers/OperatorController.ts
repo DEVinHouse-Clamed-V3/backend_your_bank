@@ -1,11 +1,8 @@
-
-
 import { NextFunction, Request, Response } from "express";
 import { AppDataSource } from "../data-source";
 import { Operator } from "../entities/Operator";
 
 class OperatorController {
-
   private operatorRepository;
 
   constructor() {
@@ -13,7 +10,7 @@ class OperatorController {
   }
 
   getOperators = async (req: Request, res: Response, next: NextFunction) => {
-   /* 
+    /* 
       #swagger.security = [{ "bearerAuth": [] }]
 
       #swagger.tags = ['Operator']
@@ -43,12 +40,12 @@ class OperatorController {
       }
 
    */
-        try {
+    try {
       const operators = await this.operatorRepository.find();
       res.status(200).json(operators);
-        } catch (error) {
+    } catch (error) {
       next(error);
-        }
+    }
   };
 }
 

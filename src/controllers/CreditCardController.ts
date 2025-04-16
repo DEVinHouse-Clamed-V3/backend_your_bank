@@ -5,11 +5,9 @@ import { Client } from "../entities/Client";
 
 class CreditCardController {
   private creditCardRepository;
-  private clientRepository;
 
   constructor() {
     this.creditCardRepository = AppDataSource.getRepository(CreditCard);
-    this.clientRepository = AppDataSource.getRepository(Client);
   }
 
   getCreditCardsByClient = async (
@@ -49,13 +47,9 @@ class CreditCardController {
 
       */
 
-      const client = await this.clientRepository.findOneBy({
-        user_id: req.userId,
-      });
-
       const cards = await this.creditCardRepository.find({
         where: {
-          client_id: client?.id,
+          client_id: req.clientId,
         },
       });
 

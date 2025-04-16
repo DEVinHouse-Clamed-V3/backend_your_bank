@@ -5,20 +5,45 @@ import { Client } from "../entities/Client";
 
 class ClientController {
   private movementRepository;
-  private clientRepository;
 
   constructor() {
     this.movementRepository = AppDataSource.getRepository(Movement);
-    this.clientRepository = AppDataSource.getRepository(Client)
   }
 
   getBalanceByClient = async (req: Request, res: Response) => {
     try {
+      /* 
+        #swagger.security = [{ "bearerAuth": [] }]
 
-      const client = await this.clientRepository.findOneBy({user_id: req.userId})
+        #swagger.tags = ['Client']
+        #swagger.summary = 'Obtém o saldo do cliente logado'
+        #swagger.description = 'Retorna o saldo atual do cliente logado com base nos movimentos registrados'
 
+        #swagger.responses[200] = {
+          description: 'Saldo atual do cliente logado.',
+          content: {
+            "application/json": {
+                schema: {
+                    $ref: "#/components/schemas/responseGetBalanceByClient"
+                }
+            }
+          }
+        }
+    
+        #swagger.responses[500] = {
+          description: "Erro interno do servidor",
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/errorResponse"
+              }
+            }
+          }
+        }
+
+      */
       const lastMovement = await this.movementRepository.findOne({
-        where: { client_id: client?.id },
+        where: { client_id: req?.clientId },
         order: { created_at: "DESC" },
       });
 
