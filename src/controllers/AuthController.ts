@@ -100,7 +100,11 @@ class AuthController {
             userId: user.id
         }
         
-        const token = jwt.sign(contentToken, process.env.JWT_SECRET as string, { expiresIn: '3h' })
+        const token = jwt.sign(contentToken, process.env.JWT_SECRET as string, { expiresIn: '1m' })
+         
+        
+        // ETAPA 1 - this.tokenUserRepository.delete( idUsuario) - 3 horas depois
+        // ETAPA 2 - this.tokenUserRepository.save(token, idUsuario)
 
         res.status(200).json({token: token, name: user.name})
     } catch (error){

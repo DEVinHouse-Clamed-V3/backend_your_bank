@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import jwt, { JwtPayload } from "jsonwebtoken";
+import jwt, { JwtPayload, TokenExpiredError } from "jsonwebtoken";
 import AppError from "../utils/AppError";
 
 import { AppDataSource } from "../data-source";
@@ -25,6 +25,9 @@ export const verifyToken = async (
 
     const data = jwt.verify(token, process.env.JWT_SECRET ?? "") as dataJwt;
 
+    // 3 - Ir no banco e vericia se token recebido ele se encontra na tabela de tokens do usuario
+    /// if(tokenExisteNaoExiste) throw new AppError("Token inválido", 401);
+
     req.userId = data.userId;
 
     const clientRepository = AppDataSource.getRepository(Client);
@@ -36,7 +39,9 @@ export const verifyToken = async (
 
     next();
   } catch (error) {
-    if (error instanceof Error) {
+    if (error instanceof TokenExpiredError) {
+      next(new AppError("TOKEN_EXPIRED", 401));
+    } else if (error instanceof Error) {
       next(new AppError(error.message, 401));
     } else {
       next(new AppError("Unknown error", 401));
